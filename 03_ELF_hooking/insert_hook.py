@@ -9,7 +9,7 @@ import lief
 libm = lief.parse("/usr/lib/libm.so.6")
 hook = lief.parse("hook")
 
-offset, size = libm.insert_content(hook.segments[0].data)
+offset, size = libm.insert_content(hook.segments[0].content)
 
 print("Hook inserted at offset: 0x{:06x}".format(offset))
 
