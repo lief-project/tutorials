@@ -10,6 +10,12 @@ crackme.bin: crackme.c
 hook: hook.c
 	$(CC) -nostdlib -nodefaultlibs -fPIC -Wl,-shared $^ -o $@
 
+run: all
+	python ./hook_pltgot.py
+	chmod u+x ./crackme.hooked
+	./crackme.hooked XXXXXXXXXXXXXXXXXXXXX
+
+
 .PHONY: clean
 
 clean:
