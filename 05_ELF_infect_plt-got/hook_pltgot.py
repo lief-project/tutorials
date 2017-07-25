@@ -10,7 +10,7 @@ hook    = lief.parse("hook")
 
 segment           = lief.ELF.Segment()
 segment.type      = lief.ELF.SEGMENT_TYPES.LOAD
-segment.flag      = lief.ELF.SEGMENT_FLAGS.PF_R | lief.ELF.SEGMENT_FLAGS.PF_W | lief.ELF.SEGMENT_FLAGS.PF_X
+segment.flags     = lief.ELF.SEGMENT_FLAGS.PF_R | lief.ELF.SEGMENT_FLAGS.PF_W | lief.ELF.SEGMENT_FLAGS.PF_X
 segment.content   = hook.segments[0].content # First LOAD segment which holds payload
 segment.alignment = 8
 segment           = crackme.add_segment(segment, base=0xA0000000, force_note=True)
