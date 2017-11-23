@@ -57,13 +57,5 @@ builder.build_imports(True)
 builder.build()
 builder.write("pe_from_scratch.exe")
 
-
-
-
-
-
-
-
-
 #builder.write("pe_from_scratch.exe")
 
