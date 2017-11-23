@@ -143,8 +143,8 @@ install:
 
 
 script:
-  - cd 02_PE_from_Scratch && make PYTHON_BINARY=$PYTHON_BINARY run
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cd 03_ELF_change_symbols && make PYTHON_BINARY=$PYTHON_BINARY run ;fi
+  - cd 02_PE_from_Scratch && make PYTHON_BINARY=$PYTHON_BINARY run && cd ..
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cd 03_ELF_change_symbols && make PYTHON_BINARY=$PYTHON_BINARY run && cd .. ;fi
 
 
 
