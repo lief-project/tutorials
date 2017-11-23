@@ -1,5 +1,4 @@
-CC=gcc
-CXX=g++
+PYTHON_BINARY=$(shell which python)
 
 all: hashme
 
@@ -10,7 +9,7 @@ hashme: hashme.c
 run: all
 	unset LD_LIBRARY_PATH
 	./hashme 123
-	python script.py
+	$(PYTHON_BINARY) script.py
 	chmod u+x ./hashme.obf
 	LD_LIBRARY_PATH=. ./hashme.obf 123
 
