@@ -1,4 +1,5 @@
 PYTHON_BINARY=$(shell which python)
+CURRENT_DIRECTORY=$(shell pwd)
 
 all: hashme
 
@@ -7,11 +8,10 @@ hashme: hashme.c
 	chmod u+rx $@
 
 run: all
-	unset LD_LIBRARY_PATH
-	./hashme 123
+	$(CURRENT_DIRECTORY)/hashme 123
 	$(PYTHON_BINARY) script.py
-	chmod u+x ./hashme.obf
-	LD_LIBRARY_PATH=. ./hashme.obf 123
+	chmod u+x $(CURRENT_DIRECTORY)/hashme.obf
+	LD_LIBRARY_PATH=$(CURRENT_DIRECTORY) $(CURRENT_DIRECTORY)/hashme.obf 123
 
 .PHONY: clean
 
