@@ -8,7 +8,7 @@ crackme.bin: crackme.c
 	chmod u+rx $@
 
 hook: hook.c
-	$(CC) -nostdlib -nodefaultlibs -fPIC -Wl,-shared $^ -o $@
+	$(CC) -Wl,-T script.ld -fno-stack-protector -nostdlib -nodefaultlibs -fPIC -Wl,-shared $^ -o $@
 
 run: all
 	python ./hook_pltgot.py
