@@ -4,17 +4,17 @@ CXX=g++
 all: do_math.bin hook
 
 do_math.bin: do_math.c
-	$(CC) $^  -o $@ -lm
+	$(CC) $^ -o $@ -lm
 	chmod u+rx $@
 
 hook: hook.c
-	$(CC) -Os -nostdlib -nodefaultlibs -fPIC -Wl,-shared $^ -o $@
+	$(CC) -Wl,--script=./map.ld -Os -nostdlib -nodefaultlibs -fPIC -Wl,-shared $^ -o $@
 
 run: all
 	unset LD_LIBRARY_PATH
-	./do_math.bin 1
+	./do_math.bin 2
 	python insert_hook.py
-	LD_LIBRARY_PATH=. ./do_math.bin 1
+	LD_LIBRARY_PATH=. ./do_math.bin 2
 
 .PHONY: clean
 

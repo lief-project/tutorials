@@ -10,7 +10,7 @@ int main(int argc, char **argv) {
   }
 
   int a = atoi(argv[1]);
-  printf("exp(%d) = %f\n", a, exp(a));
+  printf("cos(%d) = %f\n", a, cos(a));
   return 0;
 }
 
