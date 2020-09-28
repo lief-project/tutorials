@@ -4,7 +4,7 @@ CXX=g++
 all: crackme101.bin instrument.bin
 
 crackme101.bin: crackme101.c
-	$(CC) $^ -O0 -fPIE -pie -Wl,-strip-all -o $@
+	$(CC) $^ -O0 -fPIE -pie -Wl,-strip-all -o $@ -fvisibility=hidden
 	chmod u+rx $@
 
 instrument.bin: instrument.c

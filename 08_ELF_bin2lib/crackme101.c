@@ -2,10 +2,9 @@
 #include <stdio.h>
 #include <string.h>
 
-#define LOCAL __attribute__ ((visibility ("hidden")))
 #define NOINLINE __attribute__ ((noinline))
 
-NOINLINE LOCAL int check(char* input) {
+NOINLINE int check_found(char* input) {
   if (strcmp(input, "easy") == 0) {
     return 1;
   }
@@ -19,7 +18,7 @@ int main(int argc, char** argv) {
     exit(-1);
   }
 
-  if (check(argv[1])) {
+  if (check_found(argv[1])) {
     printf("Well done!\n");
   } else {
     printf("Wrong!\n");
