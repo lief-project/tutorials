@@ -19,6 +19,9 @@ print("Hook inserted at VA: 0x{:06x}".format(segment_added.virtual_address))
 # Offset of the function 'hook' within the CODE segment
 hook_offset = hook_symbol.value - code_segment.virtual_address
 new_addr    = segment_added.virtual_address + hook_offset
-print(f"Change {cos_symbol.name}!{cos_symbol.value:x} -> {cos_symbol.name}!{new_addr:x}")
+new_type    = lief.ELF.SYMBOL_TYPES.FUNC  # cos might have been GNU_IFUNC
+print(f"Change {cos_symbol.name}!{cos_symbol.value:x} ({cos_symbol.type.name}) -> "
+             f"{cos_symbol.name}!{new_addr:x} ({new_type.name})")
 cos_symbol.value = new_addr
+cos_symbol.type  = new_type
 libm.write("libm.so.6")
